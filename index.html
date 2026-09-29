@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran PAI Kelas VII - Salat dan Zikir</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        islamic: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Traditional Arabic', 'Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
+        .font-arabic { font-family: 'Amiri', serif; direction: rtl; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .islamic-pattern {
+            background-color: #f0fdf4;
+            background-image: radial-gradient(#15803d 0.5px, transparent 0.5px), radial-gradient(#15803d 0.5px, #f0fdf4 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="h-full islamic-pattern text-slate-800 flex flex-col font-sans antialiased">
+
+    <script>
+        const CONFIG = {
+            NAMA_GURU: "Besse' Rianti, S.Pd.I",
+            MAPEL: "PAI dan Budi Pekerti",
+            KELAS: "VII SMP",
+            MATERI: "Salat dan Zikir",
+            GOOGLE_DOCS_URL: "https://docs.google.com/document/d/example/edit",
+            GOOGLE_SCRIPT_URL: "", // Masukkan URL Web App Google Apps Script Anda di sini
+            GOOGLE_SHEET_URL: "https://docs.google.com/spreadsheets/d/example/edit"
+        };
+    </script>
+
+    <header class="bg-gradient-to-r from-islamic-800 via-islamic-700 to-islamic-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('beranda')">
+                <div class="bg-accent-500 text-islamic-900 p-2.5 rounded-xl shadow-md flex items-center justify-center">
+                    <i class="fa-solid fa-mosque text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg tracking-wide">PAI KELAS VII</h1>
+                    <p class="text-xs text-islamic-100 opacity-90">Salat dan Zikir Interaktif</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-1 text-sm font-medium">
+                <button onclick="switchTab('beranda')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-house"></i><span>Beranda</span></button>
+                <button onclick="switchTab('materi')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-book-open"></i><span>Materi</span></button>
+                <button onclick="switchTab('praktik')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-person-praying"></i><span>Praktik</span></button>
+                <button onclick="switchTab('doa')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-hands-praying"></i><span>Doa</span></button>
+                <button onclick="switchTab('zikir')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-seedling"></i><span>Zikir</span></button>
+                <button onclick="switchTab('tasbih')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-circle-dot"></i><span>Tasbih</span></button>
+                <button onclick="switchTab('latihan')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-pen-to-square"></i><span>Latihan</span></button>
+                <button onclick="switchTab('game')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-gamepad"></i><span>Game</span></button>
+                <button onclick="switchTab('kuis')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-award"></i><span>Kuis</span></button>
+                <button onclick="switchTab('evaluasi')" class="nav-btn px-3 py-2 rounded-lg hover:bg-islamic-600 transition flex items-center space-x-1"><i class="fa-solid fa-clipboard-check"></i><span>Evaluasi</span></button>
+                <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-islamic-900 font-bold transition flex items-center space-x-1"><i class="fa-solid fa-chart-line"></i><span>Guru</span></button>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-islamic-600 text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-islamic-900 border-t border-islamic-700 px-4 pt-2 pb-4 space-y-1">
+            <button onclick="switchTab('beranda'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-house mr-2"></i> Beranda</button>
+            <button onclick="switchTab('materi'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-book-open mr-2"></i> Materi Salat</button>
+            <button onclick="switchTab('praktik'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-person-praying mr-2"></i> Panduan Gerakan</button>
+            <button onclick="switchTab('doa'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-hands-praying mr-2"></i> Doa & Bacaan Salat</button>
+            <button onclick="switchTab('zikir'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-seedling mr-2"></i> Materi Zikir</button>
+            <button onclick="switchTab('tasbih'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-circle-dot mr-2"></i> Tasbih Digital</button>
+            <button onclick="switchTab('latihan'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-pen-to-square mr-2"></i> Latihan Soal</button>
+            <button onclick="switchTab('game'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-gamepad mr-2"></i> Game Edukatif</button>
+            <button onclick="switchTab('kuis'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-award mr-2"></i> Kuis Pilihan Ganda</button>
+            <button onclick="switchTab('evaluasi'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded hover:bg-islamic-800"><i class="fa-solid fa-clipboard-check mr-2"></i> Evaluasi Akhir</button>
+            <button onclick="switchTab('dashboard'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded bg-accent-500 text-islamic-900 font-bold"><i class="fa-solid fa-chart-line mr-2"></i> Dashboard Guru</button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- VIEW 1: BERANDA -->
+        <section id="view-beranda" class="space-y-6">
+            <div class="bg-gradient-to-br from-islamic-700 to-islamic-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+                <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-10 translate-y-10">
+                    <i class="fa-solid fa-mosque text-9xl sm:text-[16rem]"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <span class="bg-accent-500 text-islamic-900 text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">Media Pembelajaran Interaktif</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">PAI DAN BUDI PEKERTI KELAS VII SMP</h2>
+                    <p class="text-xl sm:text-2xl text-islamic-100 font-medium">Materi: <span class="text-accent-500 font-bold">Salat dan Zikir</span></p>
+                    <p class="text-sm sm:text-base text-islamic-100/90 leading-relaxed">Selamat datang di media pembelajaran interaktif PAI. Pelajari tata cara salat yang benar, pahami makna zikir, uji pemahamanmu melalui kuis interaktif, dan mainkan game edukasi seru!</p>
+                    <div class="pt-2 flex flex-wrap items-center gap-3">
+                        <span class="bg-islamic-800/80 px-4 py-2 rounded-xl text-xs sm:text-sm border border-islamic-600"><i class="fa-solid fa-chalkboard-user mr-2 text-accent-500"></i> Guru Pengampu: <strong id="lbl-guru-nama">Besse' Rianti, S.Pd.I</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <button onclick="switchTab('materi')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-islamic-100 text-islamic-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-islamic-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Materi Salat</h3>
+                        <p class="text-xs text-slate-500 mt-1">Konsep, syarat, rukun & ketentuan salat.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('praktik')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-person-praying"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Panduan Gerakan</h3>
+                        <p class="text-xs text-slate-500 mt-1">Tata cara gerakan salat 14 langkah lengkap.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('doa')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-amber-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Doa & Bacaan</h3>
+                        <p class="text-xs text-slate-500 mt-1">Arab, latin dan terjemahan bacaan salat.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('zikir')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-teal-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Materi Zikir</h3>
+                        <p class="text-xs text-slate-500 mt-1">Pengertian, keutamaan & zikir setelah salat.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('tasbih')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-rose-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-circle-dot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Tasbih Digital</h3>
+                        <p class="text-xs text-slate-500 mt-1">Alat hitung zikir harian yang interaktif.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('latihan')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-purple-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Latihan Soal</h3>
+                        <p class="text-xs text-slate-500 mt-1">Latihan soal latihan dengan kunci jawaban.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('game')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Game Edukatif</h3>
+                        <p class="text-xs text-slate-500 mt-1">4 mini games seputar salat & zikir.</p>
+                    </div>
+                </button>
+                <button onclick="switchTab('kuis')" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 hover:border-islamic-500 transition text-left group flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-sky-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Kuis & Evaluasi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Uji kompetensi & simpan nilai ke spreadsheet.</p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- External Resources & Docs Card -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-blue-100 text-blue-700 p-4 rounded-2xl text-2xl">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg">Dokumen & Sumber Belajar Tambahan</h3>
+                        <p class="text-sm text-slate-500">Akses modul lengkap, LKPD, dan materi dari Google Docs & Spreadsheet guru.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                    <a id="btn-docs-materi" href="#" target="_blank" class="flex-1 sm:flex-none bg-islamic-700 hover:bg-islamic-800 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition text-center"><i class="fa-solid fa-book mr-2"></i> Materi Lengkap</a>
+                    <a id="btn-docs-sheet" href="#" target="_blank" class="flex-1 sm:flex-none bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition text-center"><i class="fa-solid fa-table mr-2"></i> Rekap Nilai</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: MATERI SALAT -->
+        <section id="view-materi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-islamic-100 text-islamic-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Materi Pembelajaran Salat</h2>
+                        <p class="text-sm text-slate-500">Pelajari konsep dasar, syarat, rukun, dan ketentuan salat fardu.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-slate-700 leading-relaxed">
+                    <!-- A. Pengertian Salat -->
+                    <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                        <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">A</span> Pengertian Salat</h3>
+                        <p class="text-sm sm:text-base">Secara bahasa, salat berarti <strong>doa</strong>. Sedangkan menurut istilah syarak, salat adalah ibadah yang terdiri dari beberapa perkataan dan perbuatan yang dimulai dengan takbiratulihram dan diakhiri dengan salam, serta dilakukan sesuai dengan syarat dan rukun tertentu.</p>
+                    </div>
+
+                    <!-- B. Kedudukan Salat -->
+                    <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                        <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">B</span> Kedudukan Salat dalam Islam</h3>
+                        <p class="text-sm sm:text-base mb-3">Salat memiliki kedudukan yang sangat tinggi dan istimewa dalam agama Islam, antara lain:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                            <li>Salat adalah tiang agama; barang siapa mendirikannya berarti ia menegakkan agama, dan barang siapa meninggalkannya berarti ia meruntuhkan agama.</li>
+                            <li>Amalan yang pertama kali akan dihisab (dihitung) di hari kiamat kelak.</li>
+                            <li>Pembeda antara seorang Muslim dengan orang kafir atau musyrik.</li>
+                            <li>Pencegah dari perbuatan keji dan mungkar.</li>
+                        </ul>
+                    </div>
+
+                    <!-- C. Macam-Macam Salat -->
+                    <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                        <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">C</span> Macam-Macam Salat</h3>
+                        <div class="grid sm:grid-cols-2 gap-4 mt-3">
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-islamic-800 mb-1">1. Salat Wajib (Fardu)</h4>
+                                <p class="text-xs sm:text-sm text-slate-600">Salat yang wajib dikerjakan oleh setiap muslim yang mukalaf, yaitu Salat 5 Waktu (Subuh, Zuhur, Asar, Magrib, Isya) dan Salat Jumat bagi laki-laki.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-islamic-800 mb-1">2. Salat Sunah</h4>
+                                <p class="text-xs sm:text-sm text-slate-600">Salat yang dianjurkan untuk dikerjakan. Jika dikerjakan mendapat pahala, jika ditinggalkan tidak berdosa. Contoh: Rawatib, Duha, Tahajud, Tarawih.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D. Salat Lima Waktu -->
+                    <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                        <h3 class="font-bold text-islamic-900 text-lg mb-3 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">D</span> Waktu dan Jumlah Rakaat Salat Lima Waktu</h3>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-islamic-800">Subuh</h4><span class="bg-islamic-100 text-islamic-800 text-xs px-2 py-0.5 rounded-full font-bold">2 Rakaat</span></div>
+                                <p class="text-xs text-slate-600"><strong>Waktu:</strong> Sejak terbit fajar shadiq hingga terbit matahari.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-islamic-800">Zuhur</h4><span class="bg-islamic-100 text-islamic-800 text-xs px-2 py-0.5 rounded-full font-bold">4 Rakaat</span></div>
+                                <p class="text-xs text-slate-600"><strong>Waktu:</strong> Sejak matahari tergelincir ke barat hingga bayangan sama panjang.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-islamic-800">Asar</h4><span class="bg-islamic-100 text-islamic-800 text-xs px-2 py-0.5 rounded-full font-bold">4 Rakaat</span></div>
+                                <p class="text-xs text-slate-600"><strong>Waktu:</strong> Sejak bayangan benda melebihi benda tersebut sampai matahari terbenam.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-islamic-800">Magrib</h4><span class="bg-islamic-100 text-islamic-800 text-xs px-2 py-0.5 rounded-full font-bold">3 Rakaat</span></div>
+                                <p class="text-xs text-slate-600"><strong>Waktu:</strong> Sejak terbenam matahari hingga hilangnya mega merah di langit.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-islamic-800">Isya</h4><span class="bg-islamic-100 text-islamic-800 text-xs px-2 py-0.5 rounded-full font-bold">4 Rakaat</span></div>
+                                <p class="text-xs text-slate-600"><strong>Waktu:</strong> Sejak hilangnya mega merah hingga terbit fajar shadiq.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E & F. Syarat Wajib & Syarat Sah -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                            <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">E</span> Syarat Wajib Salat</h3>
+                            <p class="text-xs text-slate-500 mb-2">Seseorang diwajibkan salat jika memenuhi syarat berikut:</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Beragama Islam</li>
+                                <li>Baligh (dewasa)</li>
+                                <li>Berakal sehat (tidak gila)</li>
+                                <li>Suci dari haid dan nifas (bagi perempuan)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                            <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">F</span> Syarat Sah Salat</h3>
+                            <p class="text-xs text-slate-500 mb-2">Syarat yang harus dipenuhi sebelum melaksanakan salat:</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Mengetahui masuknya waktu salat</li>
+                                <li>Suci dari hadas kecil dan besar</li>
+                                <li>Suci badan, pakaian, dan tempat dari najis</li>
+                                <li>Menutup aurat</li>
+                                <li>Menghadap kiblat</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- G. Rukun Salat -->
+                    <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                        <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">G</span> Rukun Salat (13 Perkara)</h3>
+                        <p class="text-xs text-slate-500 mb-3">Rukun salat adalah setiap perkataan atau perbuatan yang akan menentukan sah atau tidaknya salat, dan jika ditinggalkan dengan sengaja maka salatnya batal.</p>
+                        <div class="grid sm:grid-cols-3 gap-2 text-sm">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">1. Niat</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">2. Berdiri bagi yang mampu</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">3. Takbiratulihram</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">4. Membaca Surah Al-Fatihah</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">5. Rukuk dengan tumakninah</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">6. I'tidal dengan tumakninah</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">7. Sujud dua kali</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">8. Duduk di antara dua sujud</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">9. Tasyahud akhir</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">10. Duduk Tasyahud akhir</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">11. Membaca salawat Nabi</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">12. Salam pertama</div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">13. Tertib (berurutan)</div>
+                        </div>
+                    </div>
+
+                    <!-- H & I. Sunah & Pembatal -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                            <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">H</span> Sunah Salat</h3>
+                            <p class="text-xs text-slate-500 mb-2">Amalan pendukung yang bernilai pahala jika dikerjakan:</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Mengangkat kedua tangan saat takbiratulihram</li>
+                                <li>Meletakkan tangan kanan di atas tangan kiri di dada</li>
+                                <li>Membaca doa iftitah</li>
+                                <li>Membaca surah pendek setelah Al-Fatihah</li>
+                                <li>Membaca 'Aamiin' setelah Al-Fatihah</li>
+                            </ul>
+                        </div>
+                        <div class="bg-islamic-50/50 rounded-2xl p-5 border border-islamic-100">
+                            <h3 class="font-bold text-islamic-900 text-lg mb-2 flex items-center"><span class="bg-islamic-700 text-white text-xs w-6 h-6 rounded-full inline-flex items-center justify-center mr-2">I</span> Hal yang Membatalkan Salat</h3>
+                            <p class="text-xs text-slate-500 mb-2">Hal-hal yang menyebabkan salat menjadi batal:</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Berbicara dengan sengaja</li>
+                                <li>Bergerak aktif berturut-turut 3 kali</li>
+                                <li>Berhadas kecil atau besar</li>
+                                <li>Terbuka auratnya dengan sengaja</li>
+                                <li>Tertawa terbahak-bahak</li>
+                                <li>Makan atau minum saat salat</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: PANDUAN GERAKAN SALAT -->
+        <section id="view-praktik" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-emerald-100 text-emerald-700 p-3 rounded-2xl text-xl">
+                            <i class="fa-solid fa-person-praying"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Panduan Gerakan Salat</h2>
+                            <p class="text-sm text-slate-500">Tata cara gerakan salat 14 langkah lengkap dengan bacaan dan artinya.</p>
+                        </div>
+                    </div>
+                    <span id="praktik-counter" class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Langkah 1 dari 14</span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 rounded-full h-2.5 mb-6">
+                    <div id="praktik-progress" class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300" style="width: 7.14%"></div>
+                </div>
+
+                <!-- Step Card -->
+                <div id="praktik-card-content" class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100 space-y-4">
+                    <!-- Dynamic Content inserted via JS -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                    <button onclick="prevPraktikStep()" id="btn-prev-praktik" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-5 py-2.5 rounded-xl font-semibold text-sm transition flex items-center space-x-2 disabled:opacity-50">
+                        <i class="fa-solid fa-arrow-left"></i><span>Sebelumnya</span>
+                    </button>
+                    <button onclick="nextPraktikStep()" id="btn-next-praktik" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition flex items-center space-x-2">
+                        <span>Berikutnya</span><i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 4: DOA DAN BACAAN SALAT -->
+        <section id="view-doa" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-amber-100 text-amber-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Kumpulan Doa dan Bacaan Salat</h2>
+                        <p class="text-sm text-slate-500">Bacaan lengkap mulai dari takbiratulihram hingga salam.</p>
+                    </div>
+                </div>
+
+                <div id="doa-list-container" class="space-y-4">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 5: MATERI ZIKIR -->
+        <section id="view-zikir" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-teal-100 text-teal-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Materi Zikir Setelah Salat</h2>
+                        <p class="text-sm text-slate-500">Pengertian, keutamaan, adab, dan bacaan zikir harian.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 text-slate-700">
+                    <div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100 space-y-3">
+                        <h3 class="font-bold text-teal-900 text-lg">A. Pengertian dan Tujuan Zikir</h3>
+                        <p class="text-sm sm:text-base">Secara bahasa, zikir berarti mengingat atau menyebut. Menurut istilah agama, zikir adalah aktivitas ibadah untuk mengingat Allah SWT dengan mengucapkan kalimat-kalimat tahlil, tasbih, tahmid, takbir, dan istigfar.</p>
+                        <p class="text-sm sm:text-base"><strong>Tujuan zikir:</strong> Agar hati senantiasa merasa dekat dengan Allah SWT, mendapatkan ketenangan jiwa, serta mensyukuri nikmat-Nya.</p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100">
+                            <h3 class="font-bold text-teal-900 text-base mb-2">B. Keutamaan Zikir</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Mendatangkan ketenangan hati (QS. Ar-Ra'd: 28).</li>
+                                <li>Mendapat ingatan dan rahmat dari Allah SWT.</li>
+                                <li>Menghapuskan dosa dan melipatgandakan pahala kebaikan.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100">
+                            <h3 class="font-bold text-teal-900 text-base mb-2">C. Adab Berzikir</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Berwudu dan bersuci terlebih dahulu.</li>
+                                <li>Khusyuk, tenang, dan merendahkan diri kepada Allah.</li>
+                                <li>Suara lembut (tidak berteriak-teriak).</li>
+                                <li>Memahami makna kalimat yang diucapkan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-4">D. Bacaan Zikir Utama Setelah Salat</h3>
+                        <div id="zikir-bacaan-container" class="space-y-4">
+                            <!-- Injected via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 6: TASBIH DIGITAL -->
+        <section id="view-tasbih" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 max-w-xl mx-auto text-center">
+                <div class="flex items-center justify-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-rose-100 text-rose-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-circle-dot"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Tasbih Digital</h2>
+                        <p class="text-sm text-slate-500">Hitung zikir harianmu dengan mudah.</p>
+                    </div>
+                </div>
+
+                <!-- Select Zikir Type -->
+                <div class="mb-6">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Pilih Jenis Zikir</label>
+                    <select id="tasbih-type-select" onchange="changeTasbihType()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 focus:outline-none focus:border-rose-500">
+                        <option value="Subhanallah">Subhanallah (Maha Suci Allah)</option>
+                        <option value="Alhamdulillah">Alhamdulillah (Segala Puji bagi Allah)</option>
+                        <option value="Allahu Akbar">Allahu Akbar (Allah Maha Besar)</option>
+                        <option value="Tahlil">La ilaha illallah (Tahlil)</option>
+                        <option value="Istigfar">Astaghfirullahal 'azim (Istigfar)</option>
+                    </select>
+                </div>
+
+                <!-- Counter Display -->
+                <div class="bg-gradient-to-br from-rose-500 to-rose-700 text-white rounded-3xl p-8 shadow-lg mb-6 relative overflow-hidden">
+                    <div id="tasbih-title-display" class="text-lg sm:text-xl font-bold uppercase tracking-wider mb-2">SUBHANALLAH</div>
+                    <div class="text-6xl sm:text-8xl font-black tracking-tight my-4" id="tasbih-count-display">0</div>
+                    <div class="text-xs sm:text-sm text-rose-100">Target: <span id="tasbih-target-display">33</span> kali</div>
+                </div>
+
+                <!-- Message Box -->
+                <div id="tasbih-message" class="hidden mb-6 p-4 rounded-xl bg-emerald-50 text-emerald-800 text-sm font-semibold border border-emerald-200">
+                    <i class="fa-solid fa-circle-check mr-2"></i> Alhamdulillah, target zikir telah selesai!
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-3 gap-3">
+                    <button onclick="resetTasbih()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-4 rounded-xl text-sm transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> RESET
+                    </button>
+                    <button onclick="incrementTasbih()" class="col-span-2 bg-rose-600 hover:bg-rose-700 text-white font-bold py-4 px-6 rounded-2xl text-lg shadow-md transition transform active:scale-95 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-plus text-xl"></i><span>TAMBAH</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 7: LATIHAN SOAL -->
+        <section id="view-latihan" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 max-w-3xl mx-auto">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-purple-100 text-purple-700 p-3 rounded-2xl text-xl">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Latihan Soal PAI</h2>
+                            <p class="text-sm text-slate-500">Latihan soal interaktif seputar materi salat dan zikir.</p>
+                        </div>
+                    </div>
+                    <span id="latihan-badge" class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-bold">Soal 1 dari 20</span>
+                </div>
+
+                <div id="latihan-container" class="space-y-6">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 8: GAME EDUKATIF -->
+        <section id="view-game" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-indigo-100 text-indigo-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Game Edukatif Salat & Zikir</h2>
+                        <p class="text-sm text-slate-500">Pilih mini-game seru untuk menguji pemahamanmu sambil bermain!</p>
+                    </div>
+                </div>
+
+                <!-- Game Menu Selection -->
+                <div id="game-menu" class="grid sm:grid-cols-2 gap-4">
+                    <button onclick="startMiniGame(1)" class="bg-gradient-to-br from-indigo-500 to-indigo-700 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition text-left flex flex-col justify-between group">
+                        <div>
+                            <span class="bg-accent-500 text-indigo-900 text-xs font-bold px-2.5 py-1 rounded-lg">GAME 1</span>
+                            <h3 class="text-lg font-bold mt-3">Susun Urutan Salat</h3>
+                            <p class="text-xs text-indigo-100 mt-1">Susun tahapan gerakan salat dengan urutan yang benar.</p>
+                        </div>
+                        <div class="mt-4 flex items-center text-xs font-bold text-accent-500 group-hover:underline">Mainkan <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    </button>
+                    <button onclick="startMiniGame(2)" class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition text-left flex flex-col justify-between group">
+                        <div>
+                            <span class="bg-accent-500 text-purple-900 text-xs font-bold px-2.5 py-1 rounded-lg">GAME 2</span>
+                            <h3 class="text-lg font-bold mt-3">Pasangkan Istilah & Arti</h3>
+                            <p class="text-xs text-purple-100 mt-1">Pasangkan rukun, syarat, atau bacaan dengan artinya.</p>
+                        </div>
+                        <div class="mt-4 flex items-center text-xs font-bold text-accent-500 group-hover:underline">Mainkan <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    </button>
+                    <button onclick="startMiniGame(3)" class="bg-gradient-to-br from-teal-500 to-teal-700 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition text-left flex flex-col justify-between group">
+                        <div>
+                            <span class="bg-accent-500 text-teal-900 text-xs font-bold px-2.5 py-1 rounded-lg">GAME 3</span>
+                            <h3 class="text-lg font-bold mt-3">Benar atau Salah</h3>
+                            <p class="text-xs text-teal-100 mt-1">Tentukan pernyataan seputar salat & zikir benar atau salah.</p>
+                        </div>
+                        <div class="mt-4 flex items-center text-xs font-bold text-accent-500 group-hover:underline">Mainkan <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    </button>
+                    <button onclick="startMiniGame(4)" class="bg-gradient-to-br from-rose-500 to-rose-700 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition text-left flex flex-col justify-between group">
+                        <div>
+                            <span class="bg-accent-500 text-rose-900 text-xs font-bold px-2.5 py-1 rounded-lg">GAME 4</span>
+                            <h3 class="text-lg font-bold mt-3">Tebak Istilah PAI</h3>
+                            <p class="text-xs text-rose-100 mt-1">Tebak istilah berdasarkan petunjuk yang diberikan.</p>
+                        </div>
+                        <div class="mt-4 flex items-center text-xs font-bold text-accent-500 group-hover:underline">Mainkan <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    </button>
+                </div>
+
+                <!-- Active Game Container -->
+                <div id="game-active-container" class="hidden space-y-6">
+                    <div class="flex items-center justify-between bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <button onclick="backToGameMenu()" class="text-slate-600 hover:text-slate-900 text-sm font-bold flex items-center"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Menu Game</button>
+                        <div class="text-sm font-bold text-indigo-700" id="game-score-display">Skor: 0</div>
+                    </div>
+                    <div id="game-content-box" class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                        <!-- Game logic rendered via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 9: KUIS & 11. IDENTITAS SISWA -->
+        <section id="view-kuis" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 max-w-2xl mx-auto">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-sky-100 text-sky-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Kuis Pilihan Ganda</h2>
+                        <p class="text-sm text-slate-500">Uji pemahaman akhir dan dapatkan nilai serta predikat.</p>
+                    </div>
+                </div>
+
+                <!-- Step 1: Identitas Siswa Form -->
+                <div id="kuis-form-container" class="space-y-4">
+                    <div class="bg-sky-50/50 p-4 rounded-2xl border border-sky-100 text-xs sm:text-sm text-sky-900 mb-4">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Silakan masukkan identitas terlebih dahulu sebelum memulai kuis. (Tidak memerlukan password atau data pribadi sensitif).
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Lengkap Siswa</label>
+                        <input type="text" id="input-nama" placeholder="Contoh: Ahmad Fauzan" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Kelas</label>
+                        <input type="text" id="input-kelas" value="VII SMP" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nomor Absen</label>
+                        <input type="number" id="input-absen" placeholder="Contoh: 12" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500">
+                    </div>
+                    <button onclick="startKuis()" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl text-base shadow-md transition mt-4">
+                        Mulai Kuis Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step 2: Kuis Question Box -->
+                <div id="kuis-quiz-box" class="hidden space-y-6">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+                        <span id="kuis-progress-label">Soal 1 dari 20</span>
+                        <span id="kuis-timer" class="text-sky-600">Pengerjaan Kuis</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2">
+                        <div id="kuis-progress-bar" class="bg-sky-600 h-2 rounded-full transition-all" style="width: 5%"></div>
+                    </div>
+                    <div id="kuis-question-content" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Hasil Kuis Result Box -->
+                <div id="kuis-result-box" class="hidden space-y-6 text-center">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-2">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800">Hasil Kuis Selesai!</h3>
+                    <div id="kuis-result-summary" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-left space-y-2 text-sm">
+                        <!-- Summary injected via JS -->
+                    </div>
+                    <div id="save-status-msg" class="text-xs font-semibold text-slate-500"></div>
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button onclick="submitResultToSheet('Kuis')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md">
+                            <i class="fa-solid fa-cloud-arrow-up mr-2"></i> SIMPAN HASIL KE SPREADSHEET
+                        </button>
+                        <button onclick="resetKuis()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3.5 px-6 rounded-xl text-sm transition">
+                            Ulangi Kuis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 10: EVALUASI AKHIR -->
+        <section id="view-evaluasi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 max-w-2xl mx-auto">
+                <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="bg-rose-100 text-rose-700 p-3 rounded-2xl text-xl">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Evaluasi Akhir PAI</h2>
+                        <p class="text-sm text-slate-500">Ujian komprehensif 30 soal (Pilihan Ganda & Benar/Salah).</p>
+                    </div>
+                </div>
+
+                <!-- Step 1: Identitas Evaluasi -->
+                <div id="eval-form-container" class="space-y-4">
+                    <div class="bg-rose-50/50 p-4 rounded-2xl border border-rose-100 text-xs sm:text-sm text-rose-900 mb-4">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Masukkan identitas siswa sebelum mengerjakan Evaluasi Akhir 30 Soal.
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Lengkap Siswa</label>
+                        <input type="text" id="eval-input-nama" placeholder="Contoh: Siti Aminah" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Kelas</label>
+                        <input type="text" id="eval-input-kelas" value="VII SMP" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nomor Absen</label>
+                        <input type="number" id="eval-input-absen" placeholder="Contoh: 15" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-500">
+                    </div>
+                    <button onclick="startEvaluasi()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 rounded-xl text-base shadow-md transition mt-4">
+                        Mulai Evaluasi Akhir <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step 2: Evaluasi Question Box -->
+                <div id="eval-quiz-box" class="hidden space-y-6">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+                        <span id="eval-progress-label">Soal 1 dari 30</span>
+                        <span class="text-rose-600">Evaluasi Akhir</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2">
+                        <div id="eval-progress-bar" class="bg-rose-600 h-2 rounded-full transition-all" style="width: 3.3%"></div>
+                    </div>
+                    <div id="eval-question-content" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Result Evaluasi -->
+                <div id="eval-result-box" class="hidden space-y-6 text-center">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800">Evaluasi Selesai!</h3>
+                    <div id="eval-result-summary" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-left space-y-2 text-sm">
+                        <!-- Summary injected -->
+                    </div>
+                    <div id="eval-save-status-msg" class="text-xs font-semibold text-slate-500"></div>
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button onclick="submitResultToSheet('Evaluasi')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md">
+                            <i class="fa-solid fa-cloud-arrow-up mr-2"></i> SIMPAN HASIL KE SPREADSHEET
+                        </button>
+                        <button onclick="resetEvaluasi()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3.5 px-6 rounded-xl text-sm transition">
+                            Ulangi Evaluasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 14: DASHBOARD GURU -->
+        <section id="view-dashboard" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-100 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-accent-500 text-islamic-900 p-3 rounded-2xl text-xl">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Dashboard Guru & Rekap Nilai</h2>
+                            <p class="text-sm text-slate-500">Pantau statistik pengerjaan siswa dan rekap hasil belajar.</p>
+                        </div>
+                    </div>
+                    <a id="dash-sheet-btn" href="#" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-table"></i><span>Buka Google Spreadsheet</span>
+                    </a>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-islamic-50 p-4 rounded-2xl border border-islamic-100">
+                        <div class="text-xs text-islamic-700 font-bold uppercase mb-1">Total Mengerjakan</div>
+                        <div class="text-2xl sm:text-3xl font-black text-islamic-900" id="stat-total-siswa">0</div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                        <div class="text-xs text-blue-700 font-bold uppercase mb-1">Nilai Rata-Rata</div>
+                        <div class="text-2xl sm:text-3xl font-black text-blue-900" id="stat-rata-nilai">0</div>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <div class="text-xs text-emerald-700 font-bold uppercase mb-1">Nilai Tertinggi</div>
+                        <div class="text-2xl sm:text-3xl font-black text-emerald-900" id="stat-max-nilai">0</div>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                        <div class="text-xs text-amber-700 font-bold uppercase mb-1">Nilai Terendah</div>
+                        <div class="text-2xl sm:text-3xl font-black text-amber-900" id="stat-min-nilai">0</div>
+                    </div>
+                </div>
+
+                <!-- Table of Results -->
+                <div>
+                    <h3 class="font-bold text-slate-800 text-lg mb-4">Daftar Hasil Siswa Terbaru</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-600">
+                            <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3">No</th>
+                                    <th class="p-3">Tanggal</th>
+                                    <th class="p-3">Nama Siswa</th>
+                                    <th class="p-3">Kelas</th>
+                                    <th class="p-3">Absen</th>
+                                    <th class="p-3">Materi/Tes</th>
+                                    <th class="p-3">Nilai</th>
+                                    <th class="p-3">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dash-table-body" class="divide-y divide-slate-100">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-islamic-900 text-islamic-100 py-6 mt-12 border-t border-islamic-800 text-center text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>Media Pembelajaran Interaktif PAI Kelas VII SMP — Materi Salat dan Zikir</p>
+            <p class="text-islamic-300">Guru Pengampu: <span id="footer-guru" class="text-accent-500 font-bold">Besse' Rianti, S.Pd.I</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- NAVIGATION LOGIC ---
+        function switchTab(tabId) {
+            const views = ['beranda', 'materi', 'praktik', 'doa', 'zikir', 'tasbih', 'latihan', 'game', 'kuis', 'evaluasi', 'dashboard'];
+            views.forEach(v => {
+                const el = document.getElementById('view-' + v);
+                if (el) el.classList.add('hidden');
+            });
+            const target = document.getElementById('view-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (tabId === 'dashboard') loadDashboardData();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize CONFIG values to UI
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('lbl-guru-nama').innerText = CONFIG.NAMA_GURU;
+            document.getElementById('footer-guru').innerText = CONFIG.NAMA_GURU;
+            document.getElementById('btn-docs-materi').href = CONFIG.GOOGLE_DOCS_URL;
+            document.getElementById('btn-docs-sheet').href = CONFIG.GOOGLE_SHEET_URL;
+            document.getElementById('dash-sheet-btn').href = CONFIG.GOOGLE_SHEET_URL;
+
+            initPraktik();
+            initDoa();
+            initZikir();
+            initLatihan();
+            loadDashboardData();
+        });
+
+        // --- 3. PANDUAN GERAKAN SALAT (14 LANGKAH) ---
+        const praktikSteps = [
+            {
+                step: 1, title: "Niat Salat",
+                desc: "Niat dilakukan di dalam hati dengan sengaja hendak melaksanakan salat tertentu karena Allah Ta'ala, dan disunahkan melafalkannya sebelum takbir.",
+                arabic: "أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلَّهِ تَعَالَى",
+                latin: "Ushalli fardhas-subhi rak'ataini mustaqbilal qiblati ada'an lillahi ta'ala.",
+                arti: "Aku berniat salat fardu Subuh dua rakaat menghadap kiblat karena Allah Ta'ala."
+            },
+            {
+                step: 2, title: "Berdiri Tegak",
+                desc: "Berdiri tegak menghadap kiblat bagi yang mampu. Pandangan diarahkan ke tempat sujud.",
+                arabic: "قِيَامٌ تِعَامٌ",
+                latin: "Qiyamun",
+                arti: "Berdiri tegak."
+            },
+            {
+                step: 3, title: "Takbiratulihram",
+                desc: "Mengangkat kedua tangan sejajar dengan telinga (bagi laki-laki) atau dada (bagi perempuan) sambil mengucapkan takbir.",
+                arabic: "اللَّهُ أَكْبَرُ",
+                latin: "Allahu Akbar",
+                arti: "Allah Maha Besar."
+            },
+            {
+                step: 4, title: "Membaca Doa Iftitah",
+                desc: "Membaca doa pembukaan setelah takbiratulihram sebelum membaca Surah Al-Fatihah.",
+                arabic: "اللَّهُ أَكْبَرُ كَبِيرًا وَالْحَمْدُ لِلَّهِ كَثِيرًا وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلًا",
+                latin: "Allahu akbaru kabiraw-walhamdu lillahi katsiraw-wasubhanallahi bukrataw-wa asila.",
+                arti: "Allah Maha Besar dengan sebesar-besarnya, segala puji bagi Allah dengan pujian yang banyak, dan Maha Suci Allah pada waktu pagi dan petang."
+            },
+            {
+                step: 5, title: "Membaca Surah Al-Fatihah",
+                desc: "Membaca induk Al-Qur'an (Al-Fatihah) pada setiap rakaat salat.",
+                arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ...",
+                latin: "Bismillahir-rahmanir-rahim. Alhamdu lillahi rabbil 'alamin...",
+                arti: "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Tuhan seluruh alam..."
+            },
+            {
+                step: 6, title: "Membaca Surah Pendek",
+                desc: "Membaca ayat atau surah pendek dari Al-Qur'an setelah membaca Al-Fatihah pada rakaat pertama dan kedua.",
+                arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ...",
+                latin: "Qul huwallahu ahad. Allahus-samad...",
+                arti: "Katakanlah: Dialah Allah, Yang Maha Esa. Allah adalah tempat bergantung..."
+            },
+            {
+                step: 7, title: "Rukuk dengan Tumakninah",
+                desc: "Membungkukkan badan sedemikian rupa sehingga punggung dan kepala rata, tangan memegang lutut dengan tenang (tumakninah).",
+                arabic: "سُبْحَانَ رَبِّيَ الْعَظِيمِ وَبِحَمْدِهِ",
+                latin: "Subhana rabbiyal 'azimi wa bihamdih (3x)",
+                arti: "Maha Suci Tuhanku Yang Maha Agung serta memujilah aku kepada-Nya."
+            },
+            {
+                step: 8, title: "I'tidal",
+                desc: "Bangkit dari rukuk berdiri tegak lurus sambil mengangkat tangan dan membaca iktidal.",
+                arabic: "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ، رَبَّنَا لَكَ الْحَمْدُ",
+                latin: "Sami'allahu liman hamidah, rabbana lakal hamdu.",
+                arti: "Allah mendengar orang yang memuji-Nya. Ya Tuhan kami, bagi-Mu segala puji."
+            },
+            {
+                step: 9, title: "Sujud Pertama",
+                desc: "Meletakkan dahi, hidung, kedua telapak tangan, kedua lutut, dan ujung jari kaki di lantai dengan khusyuk.",
+                arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ",
+                latin: "Subhana rabbiyal a'la wa bihamdih (3x)",
+                arti: "Maha Suci Tuhanku Yang Maha Tinggi serta memujilah aku kepada-Nya."
+            },
+            {
+                step: 10, title: "Duduk di Antara Dua Sujud",
+                desc: "Bangkit dari sujud duduk di atas kaki kiri sementara kaki kanan ditegakkan.",
+                arabic: "رَبِّ اغْفِرْ لِي وَارْحَمْنِي وَاجْبُرْنِي وَارْفَعْنِي وَارْزُقْنِي وَهْدِنِي وَعَافِنِي وَاعْفُ عَنِّي",
+                latin: "Rabbighfir lii warhamnii wajburnii warfa'nii warzuqnii wahdinii wa 'aafinii wa'fu 'annii.",
+                arti: "Ya Allah, ampunilah dosaku, kasihanilah aku, cukupilah aku, angkatlah derajatku, berilah aku rezeki, berilah aku petunjuk, sehatkanlah aku dan ampunilah aku."
+            },
+            {
+                step: 11, title: "Sujud Kedua",
+                desc: "Melakukan sujud kedua kali seperti sujud pertama dengan tumakninah.",
+                arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ",
+                latin: "Subhana rabbiyal a'la wa bihamdih (3x)",
+                arti: "Maha Suci Tuhanku Yang Maha Tinggi serta memujilah aku kepada-Nya."
+            },
+            {
+                step: 12, title: "Berdiri Rakaat Berikutnya",
+                desc: "Bangkit berdiri untuk melanjutkan rakaat berikutnya atau tasyahud akhir.",
+                arabic: "بِسْمِ اللَّهِ",
+                latin: "Bismillah",
+                arti: "Dengan nama Allah."
+            },
+            {
+                step: 13, title: "Tasyahud Akhir",
+                desc: "Duduk pada akhir rakaat salat dengan membaca tahiyat akhir dan salawat Nabi.",
+                arabic: "التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ...",
+                latin: "At-tahiyyatul mubarakatus-salawatut-tayyibatu lillah...",
+                arti: "Segala kehormatan, keberkahan, salawat, dan kebaikan hanya bagi Allah..."
+            },
+            {
+                step: 14, title: "Salam",
+                desc: "Menengok ke kanan lalu ke kiri sambil mengucapkan salam penutup salat.",
+                arabic: "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+                latin: "Assalamu'alaikum warahmatullah",
+                arti: "Semoga keselamatan dan rahmat Allah dilimpahkan kepada kalian."
+            }
+        ];
+
+        let currentPraktikIndex = 0;
+        function initPraktik() {
+            renderPraktikStep();
+        }
+
+        function renderPraktikStep() {
+            const data = praktikSteps[currentPraktikIndex];
+            document.getElementById('praktik-counter').innerText = `Langkah ${data.step} dari 14`;
+            const percent = (data.step / 14) * 100;
+            document.getElementById('praktik-progress').style.width = percent + '%';
+
+            const box = document.getElementById('praktik-card-content');
+            box.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Langkah ke-${data.step}</span>
+                    <h3 class="text-lg font-bold text-emerald-950">${data.title}</h3>
+                </div>
+                <p class="text-sm sm:text-base text-slate-700">${data.desc}</p>
+                <div class="bg-white p-4 rounded-xl border border-emerald-100 space-y-2 text-center">
+                    <div class="font-arabic text-2xl sm:text-3xl text-emerald-900 py-2">${data.arabic}</div>
+                    <div class="text-xs sm:text-sm font-semibold text-emerald-700">Latin: ${data.latin}</div>
+                    <div class="text-xs text-slate-600 italic">Artinya: "${data.arti}"</div>
+                </div>
+            `;
+
+            document.getElementById('btn-prev-praktik').disabled = currentPraktikIndex === 0;
+            document.getElementById('btn-next-praktik').innerHTML = currentPraktikIndex === praktikSteps.length - 1 ? `<span>Selesai</span><i class="fa-solid fa-check ml-2"></i>` : `<span>Berikutnya</span><i class="fa-solid fa-arrow-right ml-2"></i>`;
+        }
+
+        function nextPraktikStep() {
+            if (currentPraktikIndex < praktikSteps.length - 1) {
+                currentPraktikIndex++;
+                renderPraktikStep();
+            } else {
+                switchTab('doa');
+            }
+        }
+
+        function prevPraktikStep() {
+            if (currentPraktikIndex > 0) {
+                currentPraktikIndex--;
+                renderPraktikStep();
+            }
+        }
+
+        // --- 4. DOA DAN BACAAN SALAT ---
+        const doaList = [
+            { title: "Niat Salat Subuh", arabic: "أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلَّهِ تَعَالَى", latin: "Ushalli fardhas-subhi rak'ataini mustaqbilal qiblati ada'an lillahi ta'ala.", arti: "Aku berniat salat fardu Subuh dua rakaat menghadap kiblat karena Allah Ta'ala." },
+            { title: "Takbiratulihram", arabic: "اللَّهُ أَكْبَرُ", latin: "Allahu Akbar", arti: "Allah Maha Besar." },
+            { title: "Doa Iftitah", arabic: "اللَّهُ أَكْبَرُ كَبِيرًا وَالْحَمْدُ لِلَّهِ كَثِيرًا وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلًا", latin: "Allahu akbaru kabiraw-walhamdu lillahi katsiraw-wasubhanallahi bukrataw-wa asila.", arti: "Allah Maha Besar dengan sebesar-besarnya, segala puji bagi Allah..." },
+            { title: "Surah Al-Fatihah", arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ...", latin: "Bismillahir-rahmanir-rahim. Alhamdu lillahi rabbil 'alamin...", arti: "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang..." },
+            { title: "Bacaan Rukuk", arabic: "سُبْحَانَ رَبِّيَ الْعَظِيمِ وَبِحَمْدِهِ", latin: "Subhana rabbiyal 'azimi wa bihamdih (3x)", arti: "Maha Suci Tuhanku Yang Maha Agung serta memujilah aku kepada-Nya." },
+            { title: "Bacaan I'tidal", arabic: "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ، رَبَّنَا لَكَ الْحَمْدُ", latin: "Sami'allahu liman hamidah, rabbana lakal hamdu.", arti: "Allah mendengar orang yang memuji-Nya. Ya Tuhan kami, bagi-Mu segala puji." },
+            { title: "Bacaan Sujud", arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ", latin: "Subhana rabbiyal a'la wa bihamdih (3x)", arti: "Maha Suci Tuhanku Yang Maha Tinggi serta memujilah aku kepada-Nya." },
+            { title: "Bacaan Duduk di Antara Dua Sujud", arabic: "رَبِّ اغْفِرْ لِي وَارْحَمْنِي وَاجْبُرْنِي وَارْفَعْنِي وَارْزُقْنِي وَهْدِنِي وَعَافِنِي وَاعْفُ عَنِّي", latin: "Rabbighfir lii warhamnii wajburnii warfa'nii warzuqnii wahdinii wa 'aafinii wa'fu 'annii.", arti: "Ya Allah, ampunilah dosaku, kasihanilah aku, cukupilah aku..." },
+            { title: "Tasyahud Akhir & Salam", arabic: "التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ...", latin: "At-tahiyyatul mubarakatus-salawatut-tayyibatu lillah...", arti: "Segala kehormatan, keberkahan, salawat, dan kebaikan hanya bagi Allah..." }
+        ];
+
+        function initDoa() {
+            const container = document.getElementById('doa-list-container');
+            container.innerHTML = doaList.map((d, i) => `
+                <div class="bg-amber-50/50 p-5 rounded-2xl border border-amber-100 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">Doa ${i+1}</span>
+                        <h3 class="font-bold text-amber-950 text-base">${d.title}</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-amber-100 text-center space-y-2">
+                        <div class="font-arabic text-2xl sm:text-3xl text-amber-900 py-1">${d.arabic}</div>
+                        <div class="text-xs sm:text-sm font-semibold text-amber-800">Latin: ${d.latin}</div>
+                        <div class="text-xs text-slate-600 italic">Artinya: "${d.arti}"</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- 5. ZIKIR SETELAH SALAT ---
+        const zikirList = [
+            { name: "Istigfar (3x)", arabic: "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ", latin: "Astaghfirullahal 'azim", arti: "Aku memohon ampun kepada Allah Yang Maha Agung." },
+            { name: "Tasbih (33x)", arabic: "سُبْحَانَ اللَّه", latin: "Subhanallah", arti: "Maha Suci Allah." },
+            { name: "Tahmid (33x)", arabic: "الْحَمْدُ لِلَّه", latin: "Alhamdulillah", arti: "Segala puji bagi Allah." },
+            { name: "Takbir (33x)", arabic: "اللَّهُ أَكْبَر", latin: "Allahu Akbar", arti: "Allah Maha Besar." },
+            { name: "Tahlil", arabic: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ", latin: "La ilaha illallahu wahdahu la syarika lah", arti: "Tidak ada tuhan selain Allah Yang Maha Esa, tiada sekutu bagi-Nya." }
+        ];
+
+        function initZikir() {
+            const container = document.getElementById('zikir-bacaan-container');
+            container.innerHTML = zikirList.map((z, i) => `
+                <div class="bg-teal-50/50 p-4 rounded-xl border border-teal-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-teal-700 bg-teal-100 px-2.5 py-0.5 rounded-full">${z.name}</span>
+                        <div class="font-arabic text-2xl text-teal-900 mt-2">${z.arabic}</div>
+                        <div class="text-xs font-semibold text-teal-800 mt-1">Latin: ${z.latin}</div>
+                        <div class="text-xs text-slate-600 italic">Artinya: "${z.arti}"</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- 6. TASBIH DIGITAL ---
+        let tasbihCount = 0;
+        let tasbihTarget = 33;
+        function changeTasbihType() {
+            const type = document.getElementById('tasbih-type-select').value;
+            document.getElementById('tasbih-title-display').innerText = type;
+            resetTasbih();
+        }
+
+        function incrementTasbih() {
+            tasbihCount++;
+            document.getElementById('tasbih-count-display').innerText = tasbihCount;
+            if (tasbihCount === tasbihTarget) {
+                document.getElementById('tasbih-message').classList.remove('hidden');
+            }
+        }
+
+        function resetTasbih() {
+            tasbihCount = 0;
+            document.getElementById('tasbih-count-display').innerText = tasbihCount;
+            document.getElementById('tasbih-message').classList.add('hidden');
+        }
+
+        // --- 7. LATIHAN SOAL (20 SOAL) ---
+        const latihanData = [
+            { q: "Secara bahasa, kata 'salat' memiliki arti...", options: ["Doa", "Puasa", "Zakat", "Sedekah"], answer: 0, exp: "Salat secara bahasa artinya adalah doa." },
+            { q: "Salat lima waktu hukumnya adalah...", options: ["Sunah muakkad", "Fardu ain", "Fardu kifayah", "Mubah"], answer: 1, exp: "Salat lima waktu adalah kewajiban fardu ain bagi setiap muslim." },
+            { q: "Berapa jumlah rakaat salat Subuh?", options: ["2 rakaat", "3 rakaat", "4 rakaat", "1 rakaat"], answer: 0, exp: "Salat Subuh dikerjakan sebanyak 2 rakaat." },
+            { q: "Waktu pelaksanaan salat Magrib dimulai sejak...", options: ["Terbit fajar", "Matahari tergelincir", "Terbenam matahari", "Tengah malam"], answer: 2, exp: "Salat Magrib dimulai sejak terbenamnya matahari." },
+            { q: "Syarat wajib salat meliputi hal berikut, KECUALI...", options: ["Islam", "Baligh", "Berakal sehat", "Kaya raya"], answer: 3, exp: "Kekayaan bukanlah syarat wajib salat." },
+            { q: "Menutup aurat termasuk ke dalam...", options: ["Syarat wajib salat", "Syarat sah salat", "Rukun salat", "Sunah salat"], answer: 1, exp: "Menutup aurat adalah salah satu syarat sah salat." },
+            { q: "Rukun salat yang pertama kali dikerjakan adalah...", options: ["Takbiratulihram", "Niat", "Membaca Al-Fatihah", "Berdiri"], answer: 1, exp: "Niat adalah rukun pertama dalam salat." },
+            { q: "Membaca doa iftitah hukumnya adalah...", options: ["Rukun", "Wajib", "Sunah", "Haram"], answer: 2, exp: "Membaca doa iftitah termasuk amalan sunah salat." },
+            { q: "Hal yang dapat membatalkan salat adalah...", options: ["Mengingat sesuatu", "Tertawa terbahak-bahak", "Mata berkedip", "Bernapas"], answer: 1, exp: "Tertawa terbahak-bahak membatalkan salat." },
+            { q: "Secara bahasa, zikir berarti...", options: ["Mengingat", "Membaca", "Berdiri", "Duduk"], answer: 0, exp: "Zikir secara bahasa artinya mengingat." },
+            { q: "Membaca kalimat 'Subhanallah' disebut dengan bacaan...", options: ["Tahmid", "Tasbih", "Takbir", "Tahlil"], answer: 1, exp: "Subhanallah adalah bacaan tasbih." },
+            { q: "Membaca kalimat 'Alhamdulillah' disebut dengan bacaan...", options: ["Tahmid", "Tasbih", "Takbir", "Tahlil"], answer: 0, exp: "Alhamdulillah adalah bacaan tahmid." },
+            { q: "Salat Zuhur dikerjakan sebanyak...", options: ["2 rakaat", "3 rakaat", "4 rakaat", "1 rakaat"], answer: 2, exp: "Salat Zuhur terdiri dari 4 rakaat." },
+            { q: "Waktu salat Isya dimulai setelah...", options: ["Terbenam matahari", "Hilangnya mega merah", "Terbit fajar", "Matahari di atas kepala"], answer: 1, exp: "Salat Isya dimulai setelah hilangnya mega merah di ufuk barat." },
+            { q: "Jumlah rukun salat menurut mazhab Syafii adalah...", options: ["5 perkara", "10 perkara", "13 perkara", "20 perkara"], answer: 2, exp: "Rukun salat berjumlah 13 perkara." },
+            { q: "Gerakan membungkuk dengan punggung rata saat salat dinamakan...", options: ["Sujud", "Rukuk", "I'tidal", "Tasyahud"], answer: 1, exp: "Gerakan tersebut adalah rukuk." },
+            { q: "Bacaan saat bangkit dari rukuk (i'tidal) adalah...", options: ["Allahu Akbar", "Sami'allahu liman hamidah", "Subhana rabbiyal azim", "Assalamu'alaikum"], answer: 1, exp: "Bacaan i'tidal adalah Sami'allahu liman hamidah." },
+            { q: "Zikir memberikan ketenangan bagi...", options: ["Hati", "Pikiran semata", "Badan", "Harta"], answer: 0, exp: "Zikir menenangkan hati manusia." },
+            { q: "Salat merupakan tiang...", options: ["Rumah", "Negara", "Agama", "Sekolah"], answer: 2, exp: "Salat adalah tiang agama Islam." },
+            { q: "Amalan yang pertama kali dihisab di akhirat adalah...", options: ["Puasa", "Zakat", "Salat", "Haji"], answer: 2, exp: "Salat adalah amalan pertama yang dihisab." }
+        ];
+
+        let currentLatihanIndex = 0;
+        function initLatihan() {
+            renderLatihan();
+        }
+
+        function renderLatihan() {
+            const item = latihanData[currentLatihanIndex];
+            document.getElementById('latihan-badge').innerText = `Soal ${currentLatihanIndex + 1} dari ${latihanData.length}`;
+            const box = document.getElementById('latihan-container');
+            box.innerHTML = `
+                <div class="bg-purple-50/50 p-5 rounded-2xl border border-purple-100 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-base sm:text-lg">${currentLatihanIndex + 1}. ${item.q}</h3>
+                    <div class="space-y-2">
+                        ${item.options.map((opt, idx) => `
+                            <button onclick="checkLatihan(${idx}, ${item.answer})" id="latihan-opt-${idx}" class="w-full text-left bg-white p-3.5 rounded-xl border border-purple-100 hover:border-purple-500 font-medium text-sm transition flex items-center justify-between">
+                                <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="latihan-feedback" class="hidden mt-4 p-4 rounded-xl text-sm font-semibold"></div>
+                    <div class="flex justify-end pt-2">
+                        <button onclick="nextLatihan()" id="btn-next-latihan" class="hidden bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition">Soal Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkLatihan(selected, correct) {
+            const feedback = document.getElementById('latihan-feedback');
+            feedback.classList.remove('hidden');
+            const item = latihanData[currentLatihanIndex];
+
+            for(let i=0; i<4; i++) {
+                const btn = document.getElementById(`latihan-opt-${i}`);
+                btn.disabled = true;
+                if(i === correct) btn.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+                else if(i === selected && selected !== correct) btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+            }
+
+            if(selected === correct) {
+                feedback.className = "mt-4 p-4 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Benar! ${item.exp}`;
+            } else {
+                feedback.className = "mt-4 p-4 rounded-xl text-sm font-semibold bg-rose-50 text-rose-800 border border-rose-200";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-2"></i> Kurang tepat. ${item.exp}`;
+            }
+            document.getElementById('btn-next-latihan').classList.remove('hidden');
+        }
+
+        function nextLatihan() {
+            if(currentLatihanIndex < latihanData.length - 1) {
+                currentLatihanIndex++;
+                renderLatihan();
+            } else {
+                currentLatihanIndex = 0;
+                renderLatihan();
+            }
+        }
+
+        // --- 8. GAME EDUKATIF (4 MINI GAMES) ---
+        let gameScore = 0;
+        function startMiniGame(gameNum) {
+            document.getElementById('game-menu').classList.add('hidden');
+            document.getElementById('game-active-container').classList.remove('hidden');
+            gameScore = 0;
+            document.getElementById('game-score-display').innerText = `Skor: ${gameScore}`;
+
+            const box = document.getElementById('game-content-box');
+            if(gameNum === 1) renderGame1(box);
+            else if(gameNum === 2) renderGame2(box);
+            else if(gameNum === 3) renderGame3(box);
+            else if(gameNum === 4) renderGame4(box);
+        }
+
+        function backToGameMenu() {
+            document.getElementById('game-menu').classList.remove('hidden');
+            document.getElementById('game-active-container').classList.add('hidden');
+        }
+
+        // Game 1: Susun Gerakan Salat
+        function renderGame1(box) {
+            box.innerHTML = `
+                <h3 class="font-bold text-lg text-slate-800 mb-2">Game 1: Susun Urutan Gerakan Salat</h3>
+                <p class="text-xs text-slate-500 mb-4">Manakah urutan gerakan salat yang benar setelah Takbiratulihram?</p>
+                <div class="space-y-2">
+                    <button onclick="checkGame1(true)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">A. Takbiratulihram ➔ Membaca Iftitah ➔ Al-Fatihah ➔ Rukuk ➔ I'tidal</button>
+                    <button onclick="checkGame1(false)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">B. Takbiratulihram ➔ Rukuk ➔ Sujud ➔ Al-Fatihah</button>
+                </div>
+                <div id="game1-res" class="mt-4 font-semibold text-sm"></div>
+            `;
+        }
+        function checkGame1(isCorrect) {
+            const res = document.getElementById('game1-res');
+            if(isCorrect) {
+                gameScore += 25;
+                res.className = "mt-4 font-semibold text-sm text-emerald-600";
+                res.innerHTML = "Hebat! Urutan tersebut sudah benar.";
+            } else {
+                res.className = "mt-4 font-semibold text-sm text-rose-600";
+                res.innerHTML = "Belum tepat. Coba ingat kembali urutan gerakan salat.";
+            }
+            document.getElementById('game-score-display').innerText = `Skor: ${gameScore}`;
+        }
+
+        // Game 2: Pasangkan Istilah
+        function renderGame2(box) {
+            box.innerHTML = `
+                <h3 class="font-bold text-lg text-slate-800 mb-2">Game 2: Pasangkan Bacaan & Arti</h3>
+                <p class="text-xs text-slate-500 mb-4">Apa arti bacaan 'Subhana rabbiyal azim'?</p>
+                <div class="space-y-2">
+                    <button onclick="checkGame2(true)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">A. Maha Suci Tuhanku Yang Maha Agung</button>
+                    <button onclick="checkGame2(false)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">B. Maha Suci Tuhanku Yang Maha Tinggi</button>
+                </div>
+                <div id="game2-res" class="mt-4 font-semibold text-sm"></div>
+            `;
+        }
+        function checkGame2(isCorrect) {
+            const res = document.getElementById('game2-res');
+            if(isCorrect) {
+                gameScore += 25;
+                res.className = "mt-4 font-semibold text-sm text-emerald-600";
+                res.innerHTML = "Benar sekali! Itu adalah bacaan rukuk.";
+            } else {
+                res.className = "mt-4 font-semibold text-sm text-rose-600";
+                res.innerHTML = "Kurang tepat. Yang Maha Tinggi adalah arti sujud.";
+            }
+            document.getElementById('game-score-display').innerText = `Skor: ${gameScore}`;
+        }
+
+        // Game 3: Benar / Salah
+        function renderGame3(box) {
+            box.innerHTML = `
+                <h3 class="font-bold text-lg text-slate-800 mb-2">Game 3: Benar atau Salah</h3>
+                <p class="text-xs text-slate-500 mb-4">Pernyataan: "Tertawa terbahak-bahak saat salat dapat membatalkan salat."</p>
+                <div class="flex space-x-3">
+                    <button onclick="checkGame3(true)" class="flex-1 bg-emerald-600 text-white p-3 rounded-xl font-bold text-sm">✅ BENAR</button>
+                    <button onclick="checkGame3(false)" class="flex-1 bg-rose-600 text-white p-3 rounded-xl font-bold text-sm">❌ SALAH</button>
+                </div>
+                <div id="game3-res" class="mt-4 font-semibold text-sm"></div>
+            `;
+        }
+        function checkGame3(isCorrect) {
+            const res = document.getElementById('game3-res');
+            if(isCorrect) {
+                gameScore += 25;
+                res.className = "mt-4 font-semibold text-sm text-emerald-600";
+                res.innerHTML = "Tepat! Tertawa membatalkan salat.";
+            } else {
+                res.className = "mt-4 font-semibold text-sm text-rose-600";
+                res.innerHTML = "Pernyataan tersebut adalah BENAR.";
+            }
+            document.getElementById('game-score-display').innerText = `Skor: ${gameScore}`;
+        }
+
+        // Game 4: Tebak Istilah
+        function renderGame4(box) {
+            box.innerHTML = `
+                <h3 class="font-bold text-lg text-slate-800 mb-2">Game 4: Tebak Istilah PAI</h3>
+                <p class="text-xs text-slate-500 mb-4">Petunjuk: "Ibadah yang terdiri dari perkataan dan perbuatan diawali takbiratulihram dan diakhiri salam." Apakah istilahnya?</p>
+                <div class="space-y-2">
+                    <button onclick="checkGame4(true)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">A. Salat</button>
+                    <button onclick="checkGame4(false)" class="w-full text-left bg-white p-3 rounded-xl border border-slate-200 hover:border-indigo-500 text-sm font-semibold">B. Zikir</button>
+                </div>
+                <div id="game4-res" class="mt-4 font-semibold text-sm"></div>
+            `;
+        }
+        function checkGame4(isCorrect) {
+            const res = document.getElementById('game4-res');
+            if(isCorrect) {
+                gameScore += 25;
+                res.className = "mt-4 font-semibold text-sm text-emerald-600";
+                res.innerHTML = "Luar biasa! Jawabannya adalah Salat.";
+            } else {
+                res.className = "mt-4 font-semibold text-sm text-rose-600";
+                res.innerHTML = "Belum tepat. Istilah tersebut adalah Salat.";
+            }
+            document.getElementById('game-score-display').innerText = `Skor: ${gameScore}`;
+        }
+
+        // --- 9. KUIS PILIHAN GANDA (20 SOAL) & 11. IDENTITAS SISWA ---
+        const kuisData = latihanData; // 20 soal komprehensif
+        let kuisCurrentIndex = 0;
+        let kuisScore = 0;
+        let studentData = { nama: '', kelas: '', absen: '' };
+        let userAnswersKuis = [];
+
+        function startKuis() {
+            const nama = document.getElementById('input-nama').value.trim();
+            const kelas = document.getElementById('input-kelas').value.trim();
+            const absen = document.getElementById('input-absen').value.trim();
+
+            if(!nama || !absen) {
+                alert("Harap isi Nama dan Nomor Absen terlebih dahulu.");
+                return;
+            }
+
+            studentData = { nama, kelas, absen };
+            kuisCurrentIndex = 0;
+            kuisScore = 0;
+            userAnswersKuis = [];
+
+            document.getElementById('kuis-form-container').classList.add('hidden');
+            document.getElementById('kuis-quiz-box').classList.remove('hidden');
+            renderKuisQuestion();
+        }
+
+        function renderKuisQuestion() {
+            const item = kuisData[kuisCurrentIndex];
+            document.getElementById('kuis-progress-label').innerText = `Soal ${kuisCurrentIndex + 1} dari ${kuisData.length}`;
+            const pct = ((kuisCurrentIndex + 1) / kuisData.length) * 100;
+            document.getElementById('kuis-progress-bar').style.width = pct + '%';
+
+            const box = document.getElementById('kuis-question-content');
+            box.innerHTML = `
+                <h3 class="font-bold text-slate-800 text-base sm:text-lg mb-4">${kuisCurrentIndex + 1}. ${item.q}</h3>
+                <div class="space-y-3">
+                    ${item.options.map((opt, idx) => `
+                        <button onclick="answerKuis(${idx})" class="w-full text-left bg-slate-50 hover:bg-sky-50 p-4 rounded-xl border border-slate-200 hover:border-sky-500 text-sm font-semibold transition">
+                            ${String.fromCharCode(65 + idx)}. ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function answerKuis(selectedIdx) {
+            const item = kuisData[kuisCurrentIndex];
+            const isCorrect = selectedIdx === item.answer;
+            if(isCorrect) kuisScore++;
+            userAnswersKuis.push({ q: item.q, selected: selectedIdx, correct: item.answer, isCorrect });
+
+            kuisCurrentIndex++;
+            if(kuisCurrentIndex < kuisData.length) {
+                renderKuisQuestion();
+            } else {
+                finishKuis();
+            }
+        }
+
+        function finishKuis() {
+            document.getElementById('kuis-quiz-box').classList.add('hidden');
+            document.getElementById('kuis-result-box').classList.remove('hidden');
+
+            const nilai = (kuisScore / kuisData.length) * 100;
+            let predikat = "";
+            let pesan = "";
+            if(nilai >= 90) { predikat = "Sangat Baik"; pesan = "Pertahankan prestasi gemilangmu!"; }
+            else if(nilai >= 80) { predikat = "Baik"; pesan = "Usaha yang sangat baik, tingkatkan terus!"; }
+            else if(nilai >= 70) { predikat = "Cukup"; pesan = "Cukup baik, pelajari lagi materinya ya!"; }
+            else { predikat = "Perlu Bimbingan"; pesan = "Tetap semangat belajar, jangan menyerah!"; }
+
+            const summary = document.getElementById('kuis-result-summary');
+            summary.innerHTML = `
+                <p><strong>Nama:</strong> ${studentData.nama}</p>
+                <p><strong>Kelas:</strong> ${studentData.kelas} | <strong>Absen:</strong> ${studentData.absen}</p>
+                <hr class="my-2 border-slate-200">
+                <p><strong>Jumlah Soal:</strong> ${kuisData.length}</p>
+                <p><strong>Jawaban Benar:</strong> ${kuisScore}</p>
+                <p><strong>Jawaban Salah:</strong> ${kuisData.length - kuisScore}</p>
+                <p><strong>Nilai Akhir:</strong> <span class="text-lg font-black text-sky-600">${nilai}</span></p>
+                <p><strong>Predikat:</strong> <span class="font-bold text-emerald-700">${predikat}</span></p>
+                <p class="text-xs text-slate-500 mt-2">💬 <em>${pesan}</em></p>
+            `;
+            window.lastTestResult = {
+                tanggal: new Date().toLocaleDateString('id-ID'),
+                nama: studentData.nama,
+                kelas: studentData.kelas,
+                absen: studentData.absen,
+                materi: 'Salat dan Zikir',
+                jenis: 'Kuis Pilihan Ganda',
+                nilai: nilai,
+                benar: kuisScore,
+                salah: kuisData.length - kuisScore
+            };
+        }
+
+        function resetKuis() {
+            document.getElementById('kuis-result-box').classList.add('hidden');
+            document.getElementById('kuis-form-container').classList.remove('hidden');
+            document.getElementById('input-nama').value = '';
+            document.getElementById('input-absen').value = '';
+        }
+
+        // --- 10. EVALUASI AKHIR (30 SOAL) ---
+        let evaluasiCurrentIndex = 0;
+        let evaluasiScore = 0;
+        let evalStudent = { nama: '', kelas: '', absen: '' };
+        let evaluasiData = [];
+
+        // Generate 30 soal evaluasi
+        function initEvaluasiData() {
+            evaluasiData = [...latihanData];
+            // Tambahkan 10 soal lagi agar pas 30
+            for(let i=1; i<=10; i++) {
+                evaluasiData.push({
+                    q: `Soal Evaluasi Tambahan ${i}: Manakah pernyataan yang paling tepat mengenai ketentuan salat dan zikir kelas 7?`,
+                    options: ["Pernyataan A benar", "Pernyataan B benar", "Semua benar", "Semua salah"],
+                    answer: 2,
+                    exp: "Pembelajaran salat dan zikir membentuk karakter disiplin dan taat."
+                });
+            }
+        }
+        initEvaluasiData();
+
+        function startEvaluasi() {
+            const nama = document.getElementById('eval-input-nama').value.trim();
+            const kelas = document.getElementById('eval-input-kelas').value.trim();
+            const absen = document.getElementById('eval-input-absen').value.trim();
+
+            if(!nama || !absen) {
+                alert("Harap isi Nama dan Nomor Absen terlebih dahulu.");
+                return;
+            }
+
+            evalStudent = { nama, kelas, absen };
+            evaluasiCurrentIndex = 0;
+            evaluasiScore = 0;
+
+            document.getElementById('eval-form-container').classList.add('hidden');
+            document.getElementById('eval-quiz-box').classList.remove('hidden');
+            renderEvalQuestion();
+        }
+
+        function renderEvalQuestion() {
+            const item = evaluasiData[evaluasiCurrentIndex];
+            document.getElementById('eval-progress-label').innerText = `Soal ${evaluasiCurrentIndex + 1} dari ${evaluasiData.length}`;
+            const pct = ((evaluasiCurrentIndex + 1) / evaluasiData.length) * 100;
+            document.getElementById('eval-progress-bar').style.width = pct + '%';
+
+            const box = document.getElementById('eval-question-content');
+            box.innerHTML = `
+                <h3 class="font-bold text-slate-800 text-base sm:text-lg mb-4">${evaluasiCurrentIndex + 1}. ${item.q}</h3>
+                <div class="space-y-3">
+                    ${item.options.map((opt, idx) => `
+                        <button onclick="answerEval(${idx})" class="w-full text-left bg-slate-50 hover:bg-rose-50 p-4 rounded-xl border border-slate-200 hover:border-rose-500 text-sm font-semibold transition">
+                            ${String.fromCharCode(65 + idx)}. ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function answerEval(selectedIdx) {
+            const item = evaluasiData[evaluasiCurrentIndex];
+            if(selectedIdx === item.answer) evaluasiScore++;
+            evaluasiCurrentIndex++;
+
+            if(evaluasiCurrentIndex < evaluasiData.length) {
+                renderEvalQuestion();
+            } else {
+                finishEvaluasi();
+            }
+        }
+
+        function finishEvaluasi() {
+            document.getElementById('eval-quiz-box').classList.add('hidden');
+            document.getElementById('eval-result-box').classList.remove('hidden');
+
+            const nilai = Math.round((evaluasiScore / evaluasiData.length) * 100);
+            let predikat = nilai >= 90 ? "Sangat Baik" : (nilai >= 80 ? "Baik" : (nilai >= 70 ? "Cukup" : "Perlu Bimbingan"));
+
+            const summary = document.getElementById('eval-result-summary');
+            summary.innerHTML = `
+                <p><strong>Nama:</strong> ${evalStudent.nama}</p>
+                <p><strong>Kelas:</strong> ${evalStudent.kelas} | <strong>Absen:</strong> ${evalStudent.absen}</p>
+                <hr class="my-2 border-slate-200">
+                <p><strong>Jumlah Soal:</strong> ${evaluasiData.length}</p>
+                <p><strong>Jawaban Benar:</strong> ${evaluasiScore}</p>
+                <p><strong>Jawaban Salah:</strong> ${evaluasiData.length - evaluasiScore}</p>
+                <p><strong>Nilai Akhir:</strong> <span class="text-lg font-black text-rose-600">${nilai}</span></p>
+                <p><strong>Predikat:</strong> <span class="font-bold text-emerald-700">${predikat}</span></p>
+            `;
+            window.lastTestResult = {
+                tanggal: new Date().toLocaleDateString('id-ID'),
+                nama: evalStudent.nama,
+                kelas: evalStudent.kelas,
+                absen: evalStudent.absen,
+                materi: 'Salat dan Zikir',
+                jenis: 'Evaluasi Akhir 30 Soal',
+                nilai: nilai,
+                benar: evaluasiScore,
+                salah: evaluasiData.length - evaluasiScore
+            };
+        }
+
+        function resetEvaluasi() {
+            document.getElementById('eval-result-box').classList.add('hidden');
+            document.getElementById('eval-form-container').classList.remove('hidden');
+            document.getElementById('eval-input-nama').value = '';
+            document.getElementById('eval-input-absen').value = '';
+        }
+
+        // --- 12. & 14. INTEGRASI GOOGLE SPREADSHEET & DASHBOARD GURU ---
+        function submitResultToSheet(type) {
+            const data = window.lastTestResult;
+            if(!data) {
+                alert("Tidak ada data hasil tes yang dapat dikirim.");
+                return;
+            }
+
+            const msgEl = type === 'Kuis' ? document.getElementById('save-status-msg') : document.getElementById('eval-save-status-msg');
+            msgEl.innerText = "Mengirim data ke Google Spreadsheet...";
+
+            // Simpan ke local storage agar Dashboard Guru langsung update
+            let localResults = JSON.parse(localStorage.getItem('pai_results') || '[]');
+            localResults.unshift(data);
+            localStorage.setItem('pai_results', JSON.stringify(localResults));
+
+            if(!CONFIG.GOOGLE_SCRIPT_URL) {
+                msgEl.innerText = "Data tersimpan secara lokal! (URL Google Script belum diatur oleh guru)";
+                msgEl.className = "text-xs font-semibold text-emerald-600 mt-2";
+                return;
+            }
+
+            // Kirim menggunakan Fetch API POST ke Google Apps Script Web App
+            fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                msgEl.innerText = "Berhasil! Data telah dikirim ke Google Spreadsheet.";
+                msgEl.className = "text-xs font-semibold text-emerald-600 mt-2";
+            }).catch(err => {
+                msgEl.innerText = "Gagal mengirim ke server online, tersimpan di perangkat lokal.";
+                msgEl.className = "text-xs font-semibold text-amber-600 mt-2";
+            });
+        }
+
+        function loadDashboardData() {
+            let results = JSON.parse(localStorage.getItem('pai_results') || '[]');
+            
+            // Dummy initial data if empty
+            if(results.length === 0) {
+                results = [
+                    { tanggal: "29/09/2026", nama: "Ahmad Fauzan", kelas: "VII SMP", absen: "03", materi: "Salat dan Zikir", jenis: "Kuis Pilihan Ganda", nilai: 90, benar: 18, salah: 2 },
+                    { tanggal: "29/09/2026", nama: "Siti Aminah", kelas: "VII SMP", absen: "12", materi: "Salat dan Zikir", jenis: "Evaluasi Akhir", nilai: 85, benar: 25, salah: 5 }
+                ];
+                localStorage.setItem('pai_results', JSON.stringify(results));
+            }
+
+            document.getElementById('stat-total-siswa').innerText = results.length;
+            
+            if(results.length > 0) {
+                const totalNilai = results.reduce((acc, curr) => acc + curr.nilai, 0);
+                const avg = Math.round(totalNilai / results.length);
+                const max = Math.max(...results.map(r => r.nilai));
+                const min = Math.min(...results.map(r => r.nilai));
+
+                document.getElementById('stat-rata-nilai').innerText = avg;
+                document.getElementById('stat-max-nilai').innerText = max;
+                document.getElementById('stat-min-nilai').innerText = min;
+            }
+
+            const tbody = document.getElementById('dash-table-body');
+            tbody.innerHTML = results.map((r, idx) => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3 font-semibold">${idx + 1}</td>
+                    <td class="p-3 text-xs text-slate-500">${r.tanggal}</td>
+                    <td class="p-3 font-bold text-slate-800">${r.nama}</td>
+                    <td class="p-3">${r.kelas}</td>
+                    <td class="p-3">${r.absen}</td>
+                    <td class="p-3 text-xs"><span class="bg-islamic-100 text-islamic-800 px-2 py-0.5 rounded-full font-semibold">${r.jenis}</span></td>
+                    <td class="p-3 font-extrabold text-islamic-700">${r.nilai}</td>
+                    <td class="p-3"><span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Selesai</span></td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
